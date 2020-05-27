@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Parcel cache
+.cache/
+.parcel-cache/
+
+# Parcel Output
+dist/

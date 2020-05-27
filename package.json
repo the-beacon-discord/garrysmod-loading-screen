@@ -1,0 +1,19 @@
+{
+  "name": "garrysmod-loading-screen",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:the-beacon-discord/garrysmod-loading-screen.git",
+  "author": "Leondro Lio <github@leondrolio.com>",
+  "license": "MIT",
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "parcel": "^1.12.4",
+    "request-animation-frame-polyfill": "^1.0.1"
+  },
+  "scripts": {
+    "start": "parcel src/index.html --port 80"
+  },
+  "devDependencies": {
+    "sass": "^1.26.5"
+  }
+}
