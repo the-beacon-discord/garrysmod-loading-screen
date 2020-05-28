@@ -25,7 +25,24 @@ h1, h2, h3, h4, h5, h6, ul {
   margin-bottom: 0;
 }
 
+a {
+  color: white;
+}
+
 $container-background-colour: rgb(50, 50, 50, 0.95);
+
+.loading {
+  position: fixed;
+  overflow: hidden;
+  right: 10px;
+  bottom: 10px;
+  width: 400px;
+  height: 66px;
+
+  font-size: 10pt;
+
+  background-color: $container-background-colour;
+}
 
 .main {
   width: 80%;

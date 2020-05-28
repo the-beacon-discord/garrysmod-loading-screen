@@ -1,5 +1,5 @@
 import 'core-js/stable';
-import drawGmodLoadingShadow from './draw/gmodLoadingShadow';
+// import drawGmodLoadingShadow from './draw/gmodLoadingShadow';
 import drawPlanet from './draw/planet';
 import drawStars from './draw/stars';
 import drawTheBeacon from './draw/theBeacon';
@@ -28,7 +28,7 @@ const draw = () => {
   ctx.globalCompositeOperation = 'destination-over';
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clear canvas
 
-  drawGmodLoadingShadow(ctx);
+  // drawGmodLoadingShadow(ctx);
   drawPlanet(ctx, pivotX, pivotY, radius);
   drawTheBeacon(ctx);
   drawStars(ctx, pivotX, pivotY);
