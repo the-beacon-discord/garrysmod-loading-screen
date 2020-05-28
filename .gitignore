@@ -106,6 +106,3 @@ dist
 # Parcel cache
 .cache/
 .parcel-cache/
-
-# Parcel Output
-dist/

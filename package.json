@@ -6,14 +6,22 @@
   "author": "Leondro Lio <github@leondrolio.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.10.0",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.10.0",
+    "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
+    "ical": "^0.8.0",
+    "isomorphic-fetch": "^2.2.1",
     "parcel": "^1.12.4",
     "request-animation-frame-polyfill": "^1.0.1"
   },
   "scripts": {
-    "start": "parcel src/index.html --port 80"
+    "start": "parcel src/index.html --port 80",
+    "build": "parcel build src/index.html -d docs/"
   },
   "devDependencies": {
-    "sass": "^1.26.5"
+    "sass": "^1.26.5",
+    "typescript": "^3.9.3"
   }
 }
