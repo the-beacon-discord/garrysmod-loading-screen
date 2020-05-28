@@ -30,7 +30,7 @@ class Star {
   }
 
   static incrementRot() {
-    rot = (rot + 0.0005) % (2 * Math.PI);
+    rot = (rot - 0.0005) % (2 * Math.PI);
   }
 
   static drawStars(ctx: CanvasRenderingContext2D, x: number, y: number) {
