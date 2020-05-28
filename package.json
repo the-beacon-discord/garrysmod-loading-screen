@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "parcel src/index.html --port 80",
-    "build": "parcel build src/index.html -d docs/"
+    "build": "parcel build src/index.html -d docs/ --public-url ./"
   },
   "devDependencies": {
     "sass": "^1.26.5",
