@@ -97,7 +97,8 @@ const drawTheBeacon = (ctx: CanvasRenderingContext2D) => {
     
     if (radii[i] > MAX_RADIUS) radii.splice(i, 1)
     if (radii[i] >= BROADCAST_DROPOFF_START) {
-      ctx.strokeStyle = `rgba(255, 255, 255, ${Math.min(1, 20 / (radii[i] - BROADCAST_DROPOFF_START))})`
+      const brightness = 255 - Math.min(255, radii[i] - BROADCAST_DROPOFF_START)
+      ctx.strokeStyle = `rgb(${brightness}, ${brightness}, ${brightness})`
     } else {
       ctx.strokeStyle = 'white';
     }
