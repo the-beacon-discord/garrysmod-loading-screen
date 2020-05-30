@@ -1,13 +1,7 @@
 import 'core-js/stable';
-// import drawGmodLoadingShadow from './draw/gmodLoadingShadow';
-import drawPlanet from './draw/planet';
 import drawStars from './draw/stars';
 import drawTheBeacon from './draw/theBeacon';
 import './scss/index.scss';
-
-// import ical from 'ical';
-// import fetch from 'isomorphic-fetch';
-// const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const planet = document.getElementById('planet') as HTMLImageElement;
@@ -26,7 +20,6 @@ const draw = () => {
   const pivotX = ctx.canvas.width / 2;
   const pivotY = ctx.canvas.height + Math.sqrt(Math.pow(radius, 2) - Math.pow(pivotX, 2))
   
-  const scaleFactor = radius / 250;
   planet.style.width = `${radius * 4}px`
   planet.style.left = `${pivotX - 2 * radius}px`
   planet.style.top = `${pivotY - 2 * radius}px`
@@ -34,18 +27,10 @@ const draw = () => {
   ctx.globalCompositeOperation = 'destination-over';
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clear canvas
 
-  // drawGmodLoadingShadow(ctx);
-  // drawPlanet(ctx, pivotX, pivotY, radius);
-  drawTheBeacon(ctx);
   drawStars(ctx, pivotX, pivotY);
+  drawTheBeacon(ctx);
 
   requestAnimationFrame(draw);
 }
-
-// fetch(CORS_ANYWHERE + 'https://calendar.google.com/calendar/ical/h8pe8j0pmikgpp2cmjsh3f24ig%40group.calendar.google.com/public/basic.ics')
-//   .then(res => res.text())
-//   .then((data) => {
-//     console.log(ical.parseICS(data))
-//   })
 
 init();
