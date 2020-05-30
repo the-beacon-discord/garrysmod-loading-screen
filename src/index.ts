@@ -10,6 +10,7 @@ import './scss/index.scss';
 // const CORS_ANYWHERE = 'https://cors-anywhere.herokuapp.com/';
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+const planet = document.getElementById('planet') as HTMLImageElement;
 const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame
 
 const init = () => {
@@ -25,11 +26,16 @@ const draw = () => {
   const pivotX = ctx.canvas.width / 2;
   const pivotY = ctx.canvas.height + Math.sqrt(Math.pow(radius, 2) - Math.pow(pivotX, 2))
   
+  const scaleFactor = radius / 250;
+  planet.style.width = `${radius * 4}px`
+  planet.style.left = `${pivotX - 2 * radius}px`
+  planet.style.top = `${pivotY - 2 * radius}px`
+  
   ctx.globalCompositeOperation = 'destination-over';
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clear canvas
 
   // drawGmodLoadingShadow(ctx);
-  drawPlanet(ctx, pivotX, pivotY, radius);
+  // drawPlanet(ctx, pivotX, pivotY, radius);
   drawTheBeacon(ctx);
   drawStars(ctx, pivotX, pivotY);
 

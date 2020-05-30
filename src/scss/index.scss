@@ -44,6 +44,13 @@ $container-background-colour: rgb(50, 50, 50, 0.95);
   background-color: $container-background-colour;
 }
 
+.planet {
+  position: fixed;
+  pointer-events: none;
+  transform-origin: center;
+  animation: spin 60s linear infinite;
+}
+
 .main {
   width: 80%;
   width: 80vw;
@@ -67,5 +74,11 @@ $container-background-colour: rgb(50, 50, 50, 0.95);
     &.b {
       float: right;
     }
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
   }
 }

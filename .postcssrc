@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "autoprefixer": {
+      "remove": false,
+      "overrideBrowserslist": [
+        "chrome 19"
+      ]
+    }
+  }
+}
