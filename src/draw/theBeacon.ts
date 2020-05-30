@@ -17,8 +17,7 @@ let radii = [0];
 let broadcast_timer = 0;
 
 const drawTheBeacon = (ctx: CanvasRenderingContext2D) => {
-  const MAX_RADIUS = Math.sqrt(Math.pow(ctx.canvas.width / 2, 2) + Math.pow(ctx.canvas.height / 2, 2))
-  const BROADCAST_DROPOFF_START = MAX_RADIUS / 2
+  const BROADCAST_DROPOFF_START = Math.sqrt(Math.pow(ctx.canvas.width / 2, 2) + Math.pow(ctx.canvas.height / 2, 2)) / 2
 
   // Position vectors of the bulb and where the left and right legs meet the bottom of the canvas.
   const bulbPos = new Vector(ctx.canvas.width / 2, ctx.canvas.height / 2)
@@ -89,19 +88,28 @@ const drawTheBeacon = (ctx: CanvasRenderingContext2D) => {
   for (let i = 0; i < radii.length; i += 1) {
     ctx.beginPath();
     radii[i] = radii[i] + 1
+    let stroke = null
+
+    if (radii[i] >= BROADCAST_DROPOFF_START) {
+      const brightness = 255 - Math.min(255, radii[i] - BROADCAST_DROPOFF_START)
+
+      // If the arc cannot be seen, destroy it and don't draw it.
+      if (brightness === 0) {
+        radii.splice(i, 1)
+        continue;
+      }
+
+      stroke = `rgb(${brightness}, ${brightness}, ${brightness})`
+    } else {
+      stroke = 'white';
+    }
 
     ctx.arc(bulbPos.x, bulbPos.y, radii[i],
       (Math.PI / 2) + SUPPORT_ANGLE + Math.atan2(SUPPORT_THICKNESS + SUPPORT_BORDER_THICKNESS, radii[i]),
       (Math.PI / 2) - SUPPORT_ANGLE - Math.atan2(SUPPORT_THICKNESS + SUPPORT_BORDER_THICKNESS, radii[i]),
     )
-    
-    if (radii[i] > MAX_RADIUS) radii.splice(i, 1)
-    if (radii[i] >= BROADCAST_DROPOFF_START) {
-      const brightness = 255 - Math.min(255, radii[i] - BROADCAST_DROPOFF_START)
-      ctx.strokeStyle = `rgb(${brightness}, ${brightness}, ${brightness})`
-    } else {
-      ctx.strokeStyle = 'white';
-    }
+
+    ctx.strokeStyle = stroke;
 
     ctx.lineWidth = BROADCAST_THICKNESS
     ctx.stroke();
