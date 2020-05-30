@@ -3,7 +3,7 @@ import { Vector } from "../Vector";
 // Variables that you can change!
 // 
 const BULB_RADIUS = 20;
-const BROADCAST_INTERVAL = 45;
+const BROADCAST_INTERVAL = 60;
 const BROADCAST_THICKNESS = 10;
 const SUPPORT_THICKNESS = 10;
 const SUPPORT_BORDER_THICKNESS = 5;
