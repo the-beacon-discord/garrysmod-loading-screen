@@ -3,7 +3,7 @@ import { Vector } from "../Vector";
 // Variables that you can change!
 // 
 const BULB_RADIUS = 20;
-const BROADCAST_INTERVAL = 3000;
+const BROADCAST_INTERVAL = 45;
 const BROADCAST_THICKNESS = 10;
 const SUPPORT_THICKNESS = 10;
 const SUPPORT_BORDER_THICKNESS = 5;
@@ -12,12 +12,9 @@ const FRAME_START_FROM_LEFT = true;
 const FRAME_CLIMB_UP_TO_MAX = 0.8;
 const FRAME_THICKNESS = 7;
 
-let radii = [];
-
-setInterval(() => {
-  radii.push(0);
-}, BROADCAST_INTERVAL)
-radii.push(0);
+// Initialise broadcast radii with a single 0 radius circle.
+let radii = [0];
+let broadcast_timer = 0;
 
 const drawTheBeacon = (ctx: CanvasRenderingContext2D) => {
   const MAX_RADIUS = Math.sqrt(Math.pow(ctx.canvas.width / 2, 2) + Math.pow(ctx.canvas.height / 2, 2))
@@ -41,6 +38,12 @@ const drawTheBeacon = (ctx: CanvasRenderingContext2D) => {
 
     notches.push(currentLeg.portion(i).add(currentBase))
     fromLeft = !fromLeft
+  }
+
+  // Create any new circles if required
+  broadcast_timer = (broadcast_timer + 1) % BROADCAST_INTERVAL;
+  if (broadcast_timer === 0) {
+    radii.push(0);
   }
 
   // Draw the bulb.
